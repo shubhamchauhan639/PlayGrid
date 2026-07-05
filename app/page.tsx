@@ -1,6 +1,7 @@
 "use client";
 
-import { SandpackProvider, SandpackLayout, SandpackCodeEditor, SandpackPreview, FileTabs } from "@codesandbox/sandpack-react";
+import { SandpackProvider, SandpackLayout, SandpackCodeEditor, SandpackPreview} from "@codesandbox/sandpack-react";
+import FileTabs from "@/components/FileTabs";
 import ShareButton from "@/components/ShareButton";
 
 
@@ -18,6 +19,8 @@ export default function Home() {
   color: hotpink;
 }`,
   }}
+    options={{ recompileDelay: 1000 }}
+
 >
   <div className="flex items-center p-3 border-b bg-gray-800">
   <FileTabs />
@@ -28,7 +31,7 @@ export default function Home() {
 </div>
         <SandpackLayout>
           <SandpackCodeEditor showTabs={false} />
-          <SandpackPreview />
+          <SandpackPreview showOpenInCodeSandbox={false} />
         </SandpackLayout>
       </SandpackProvider>
     </div>
