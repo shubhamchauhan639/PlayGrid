@@ -8,10 +8,13 @@ export default async function SharedPlayground({ params }: { params: { id: strin
     .eq("id", params.id)
     .single();
 
-  if (error || !data) {
-    return <p>Snippet not found.</p>;
-  }
-
+ if (error || !data) {
+  return (
+    <div className="h-screen flex items-center justify-center bg-black text-white">
+      <p>Snippet not found. It may have been removed or the link is incorrect.</p>
+    </div>
+  );
+}
   return (
     <Sandpack
       template="react"
