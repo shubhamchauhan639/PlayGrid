@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import { Sandpack } from "@codesandbox/sandpack-react";
+import PlaygroundClient from "@/components/PlaygroundClient";
 
 export default async function SharedPlayground({ params }: { params: { id: string } }) {
   const { data, error } = await supabase
@@ -8,19 +8,13 @@ export default async function SharedPlayground({ params }: { params: { id: strin
     .eq("id", params.id)
     .single();
 
- if (error || !data) {
-  return (
-    <div className="h-screen flex items-center justify-center bg-black text-white">
-      <p>Snippet not found. It may have been removed or the link is incorrect.</p>
-    </div>
-  );
-}
-  return (
-    <Sandpack
-      template="react"
-      theme="dark"
-      files={data.files}
-      options={{ editorHeight: "100vh" }}
-    />
-  );
+  if (error || !data) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-black text-white">
+        <p>Snippet not found. It may have been removed or the link is incorrect.</p>
+      </div>
+    );
+  }
+
+  return <PlaygroundClient files={data.files} />;
 }
