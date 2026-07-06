@@ -13,7 +13,10 @@ export default function Home() {
         theme="dark"
         files={{
           "/App.js": `export default function App() {
-  return <h1>Hello world</h1>;
+  return 
+  <>
+  <h1>Hello world</h1>
+  </>;
 }`,
           "/styles.css": `h1 {
   color: hotpink;
