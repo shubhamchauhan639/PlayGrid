@@ -16,5 +16,5 @@ export default async function SharedPlayground({ params }: { params: { id: strin
     );
   }
 
-  return <PlaygroundClient files={data.files} />;
+  return <PlaygroundClient files={data.files} template={data.template || "react"} />;
 }
